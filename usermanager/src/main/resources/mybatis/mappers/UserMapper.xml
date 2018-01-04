@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.usermanager.mapper.UserMapper">
+
+
+	<select id="queryUserById" resultType="User">
+		select * from tb_user where id = #{id}
+	</select>
+	
+	<select id="queryUserList" resultType="User">
+		select * from tb_user
+	</select>
+	
+	<insert id="insertUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		INSERT INTO tb_user (
+			user_name,
+			password,
+			name,
+			age,
+			sex,
+			birthday,
+			created,
+			updated
+		)
+		VALUES
+			(
+				#{userName},
+				#{password},
+				#{name},
+				#{age},
+				#{sex},
+				#{birthday},
+				now(),
+				now()
+			);
+	</insert>
+</mapper>
